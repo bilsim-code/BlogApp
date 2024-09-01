@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
     const nextPage = page + 1;
     const hasNextPage = nextPage <= totalPages;
 
-    res.render("main/index", { locals, data, nextPage: hasNextPage ? nextPage: 1 });
+    res.render("main/index", { locals, data, nextPage: hasNextPage ? nextPage: null });
   } catch (error) {
     console.log(error);
     res.json({success: false, message: "Error"});

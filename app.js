@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT;
 const postRoute = require("./routes/postRoute");
+const adminRoute = require('./routes/adminRoute');
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGODBURI)
 .then(() => {
@@ -10,6 +11,8 @@ mongoose.connect(process.env.MONGODBURI)
 .catch(error => console.log(error));
 //END OF IMPORTS
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('public', {root: __dirname}))
 
 //ejs engine
@@ -18,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
  
 app.use("/", postRoute); 
+app.use("/admin", adminRoute);
 
 //GET about
 app.get("/about", (req, res) => {
