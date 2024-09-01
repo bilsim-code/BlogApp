@@ -11,6 +11,7 @@
 .nav {
     padding: 20px 10px;
     display: grid;
+    justify-items:baseline;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas: "logo search" "ul ul";
@@ -47,6 +48,7 @@
     gap: 20px;
     grid-area: ul;
     justify-content: center;
+    justify-self: center;
 
 }
 
@@ -153,7 +155,7 @@
 }
 
 .pagination {
-    color: #000;
+    
     padding: 20px;
 }
 

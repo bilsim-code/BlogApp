@@ -9,18 +9,27 @@ router.get("/", async (req, res) => {
     description: "Simple Blog created with Nodejs, Express & MongoDB",
   };
   try {
-    const data = await postModel.find();
-    res.render("main/index", { locals, data });
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 10;
+    const offset = (page - 1) * perPage
+    const data = await postModel.find().sort({createdAt: -1}).skip(offset).limit(perPage).exec(); 
+
+    const totalItems = await postModel.countDocuments();
+    const totalPages = Math.ceil(totalItems / perPage);
+    const nextPage = page + 1;
+    const hasNextPage = nextPage <= totalPages;
+
+    res.render("main/index", { locals, data, nextPage: hasNextPage ? nextPage: 1 });
   } catch (error) {
     console.log(error);
     res.json({success: false, message: "Error"});
   }
 });
 
+
 module.exports = router;
 
 /* 
-
 function insertDocuments() {
   postModel.insertMany([
     {
