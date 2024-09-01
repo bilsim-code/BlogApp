@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODBURI)
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static('public', {root: __dirname}))
+app.use(express.static('public', {root: __dirname}));
 
 //ejs engine
 app.set('view engine', 'ejs');

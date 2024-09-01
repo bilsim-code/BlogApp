@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const postModel = require("../schema/postSchema");
+const postModel = require("../models/postsModel");
 
 //GET /HOME
 router.get("/", async (req, res) => {
@@ -25,6 +25,18 @@ router.get("/", async (req, res) => {
     res.json({success: false, message: "Error"});
   }
 });
+
+//GET /POST:ID
+router.get("/post/:id", async(req, res) => {
+  try {
+    const id = req.params.id
+    const data = await postModel.findById({_id: id});
+    res.render('post', {data})
+    
+  } catch (error) {
+    
+  }
+})
 
 
 module.exports = router;
