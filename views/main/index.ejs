@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlogApp</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+ 
+    <%- include('../partials/navPartial.ejs') %>
+    <%- include('../partials/search.ejs') %>
+    <div class="container">
+       <div class="author">
+        <h1 class="author-heading"><%= locals.title %></h1>
+        <p class="author-body"><%= locals.description %></p>
+       </div>
+       <img src="/images/hero.jpg" alt="" width="980" height="528" class="main-img">
+       <section class="articles">
+        <h2 class="articles-heading">Latest Posts</h2>
+        <ul class="article-ul">
+            <% data.forEach((item) => { %>
+              <li>
+                <a href="#">
+                    <span class="article-title"><%= item.title %></span>
+                    <span class="article-list-date"><%= item.createdAt.toDateString() %></span>
+                </a>
+            </li>
+            <% }) %>
+           
+        </ul>
+
+        <a href="#" class="pagination">&lt; View Older Posts</a>
+       </section>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
