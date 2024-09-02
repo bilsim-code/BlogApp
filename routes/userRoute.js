@@ -1,6 +1,7 @@
 const express = require("express");
 const route = express.Router();
 const userModel = require('../models/userModel');
+const bcrypt = require('bcrypt');
 
 //GET /ADMIN/LOGIN
 route.get("/login", async(req, res) => {
