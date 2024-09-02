@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
  
 app.use("/", postRoute); 
-app.use("/admin", adminRoute);
+app.use("/", adminRoute);
 
 //GET about
 app.get("/about", (req, res) => {
