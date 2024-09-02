@@ -8,14 +8,18 @@ const jwt = require("jsonwebtoken");
 //authMiddleware
 const authMiddleware = async (req, res, next) => {
   try {
-    const { token } = req.cookie;
+    const { token } = req.cookies;
     if (!token) {
-      return res.json({ success: false, message: "Authorization failed" });
+     return res.redirect('/')
     }
     
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId
-  } catch (error) {}
+    req.userId = decoded.userId;
+    next();
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
 };
 
 //GET /ADMIN/LOGIN
@@ -85,7 +89,7 @@ route.post("/login", async (req, res) => {
 });
 
 //GET /dashboard
-route.get("/dashboard", async (req, res) => {
+route.get("/dashboard", authMiddleware, async (req, res) => {
   try {
     res.render("admin/dashboard");
   } catch (error) {
