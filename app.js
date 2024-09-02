@@ -17,15 +17,22 @@ mongoose.connect(process.env.MONGODBURI)
 //END OF IMPORTS
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
+app.use(cookieParser());
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: true,
+    resave: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODBURI
+    })
+}))
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public', {root: __dirname}));
-app.use(cookieParser());
 
 
 //ejs engine
 app.set('view engine', 'ejs');
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
  
 app.use("/", postRoute); 
 app.use("/", adminRoute);

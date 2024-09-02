@@ -3,6 +3,7 @@ const route = express.Router();
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
+const jwt = require('jsonwebtoken')
 
 //GET /ADMIN/LOGIN
 route.get("/login", async (req, res) => {
@@ -21,15 +22,19 @@ route.get("/login", async (req, res) => {
 route.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
-    const userValid = await userModel.find({username: username});
-    if (!userValid) {
+    const user = await userModel.findOne({username});
+    if (!user) {
       return res.json({ message: "User does not exist" });
     }
 
-    const isValidPassword = await bcrypt.compare(password, userValid.password);
+    const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {
       return res.json({ message: "Incorrect Password" });
     }
+    res.json({success: true, message: "Successfully logged in"})
+
+    //token
+    const token = jwt.sign({})
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error Loging in" });
@@ -59,6 +64,7 @@ route.post("/register", async (req, res) => {
     if (error.code === 11000) {
       return res.json({ success: false, message: "User already exists" });
     } else {
+        console.log(error)
       return res.json({ success: false, message: "Server Error" });
     }
   }
