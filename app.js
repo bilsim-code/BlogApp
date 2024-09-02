@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT;
 const postRoute = require("./routes/postRoute");
-const adminRoute = require('./routes/userRoute');
+const userRoute = require('./routes/userRoute');
+const adminRoute = require('./routes/adminRoute')
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -35,7 +36,8 @@ app.use(express.static('public', {root: __dirname}));
 app.set('view engine', 'ejs');
  
 app.use("/", postRoute); 
-app.use("/", adminRoute);
+app.use("/", userRoute);
+app.use('/', adminRoute);
 
 //GET about
 app.get("/about", (req, res) => {

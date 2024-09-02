@@ -90,8 +90,13 @@ route.post("/login", async (req, res) => {
 
 //GET /dashboard
 route.get("/dashboard", authMiddleware, async (req, res) => {
+    const locals = {
+        title: "Dashboard",
+        description: "Dashboard",
+    }
   try {
-    res.render("admin/dashboard");
+    const data = await userModel.find();
+    res.render("admin/dashboard", {data, locals});
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error" });
