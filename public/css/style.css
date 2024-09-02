@@ -5,13 +5,15 @@
 }
 
 .container {
-    padding: 0 10px
+    padding: 0 10px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .nav {
     padding: 20px 10px;
     display: grid;
-    justify-items:baseline;
+    justify-items: baseline;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-template-areas: "logo search" "ul ul";
@@ -155,7 +157,7 @@
 }
 
 .pagination {
-    
+
     padding: 20px;
 }
 
@@ -199,6 +201,7 @@ footer {
     padding: 6px;
     width: 90%
 }
+
 .searchClose {
     position: absolute;
     top: 0;
@@ -208,11 +211,19 @@ footer {
     cursor: pointer;
 }
 
-/* Dashboard */
+/* Login */
 .admin-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 10px
+}
+
+.admin-title .btn {
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px
 }
 
 /* .admin-posts {
@@ -251,4 +262,39 @@ footer {
 .login-page {
     margin: 80px auto;
     max-width: 600px
+}
+
+/* Dashboard */
+.dashboard-ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 0 10px;
+    gap: 20px;
+}
+
+.dashboard-ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dashboard-ul li a {
+    color: #000; 
+}
+
+.admin-post-controls {
+    display: flex;
+    align-items: center;
+    gap: 10%
+}
+
+.dashboard-ul li .btn {
+    background: #000;
+    color: #fff;
+    padding: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer
 }

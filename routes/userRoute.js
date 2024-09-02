@@ -1,6 +1,7 @@
 const express = require("express");
 const route = express.Router();
 const userModel = require("../models/userModel");
+const postModel = require('../models/postsModel');
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
@@ -92,15 +93,30 @@ route.post("/login", async (req, res) => {
 route.get("/dashboard", authMiddleware, async (req, res) => {
     const locals = {
         title: "Dashboard",
-        description: "Dashboard",
+        description: "Simple Blog created with Nodejs, Express & Mongodb",
     }
   try {
-    const data = await userModel.find();
+    const data = await postModel.find();
     res.render("admin/dashboard", {data, locals});
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error" });
   }
 });
+
+//GET /add-post
+route.get('/add-post',authMiddleware, async(req, res) => {
+    try {
+        const locals = {
+            title: "Add Post",
+            description: "Simple Blog created with Nodejs, Express & Mongodb"
+        }
+        const data = await postModel.find();
+        res.render('admin/add-post', {locals, data})
+        
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 module.exports = route;

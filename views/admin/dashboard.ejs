@@ -7,28 +7,34 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <%- include('../partials/adminNavPartial.ejs') %>
-    <div class="contaniner">
+     <%- include('../partials/adminNavPartial.ejs') %>
+    <div class="container"> 
+  
         <div class="author">
             <h1 class="author-heading"><%= locals.title %></h1>
             <p class="author-body"><%= locals.description %></p>
            </div>
-           <img src="/images/hero.jpg" alt="" width="980" height="528" class="main-img">
            <section class="articles">
-            <h2 class="articles-heading">Latest Posts</h2>
-            <ul class="article-ul">
-                <% data.forEach((item) => { %>
-                  <li>
-                    <a href="">
-                        <span class="article-title"><%= item.title %></span>
-                        <span class="article-list-date"><%= item.createdAt %></span>
+            <div class="admin-title">
+                 <h2 class="articles-heading">Latest Posts</h2>
+                 <a href="/add-post" class="btn">+Add New</a>
+            </div>
+           <hr>
+            <ul class="dashboard-ul">
+                <% data.forEach(post => { %>
+                 <li>
+                    <a href="/post/<%=post._id  %>">
+                        <span><%= post.title %> &nearr;</span>
                     </a>
-                </li>
+                    <div class="admin-post-controls">
+                        <a href="/edit-post/<%= post._id %>" class="btn">Edit</a>
+                        <form action="/delete-post/<%= post._id %>?_method=DELETE" method="post">
+                            <button type="submit" class="btn">Delete</button>
+                        </form>
+                    </div>
+                 </li>
                 <% }) %>
-               
             </ul>
-            
-           
           
            </section>
         </div>

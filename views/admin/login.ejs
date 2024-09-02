@@ -11,9 +11,13 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <%- include('../partials/search.ejs') %> <%-
-    include('../partials/adminNavPartial.ejs') %>
-    <div class="container login-page">
+        <%- include('../partials/search.ejs') %> <%-
+    include('../partials/adminNavPartial.ejs') %> 
+    <div class="container">
+    
+
+    <div class="login-page">
+    
       <h3>Sign in</h3>
       <form action="/login" method="post">
         <label for="login_username"><b>Username: </b></label>
@@ -44,6 +48,7 @@
         <button type="submit" class="btn">Register</button>
       </form>
     </div>
+</div>
     <%- include('../partials/footer.ejs') %>
     <script src="/js/script.js"></script>
   </body>
