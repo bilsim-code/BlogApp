@@ -64,13 +64,25 @@ route.post("/login", async (req, res) => {
     //token
     const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET);
     res.cookie('token', token, {httpOnly: true});
-    //res.redirect('/dashboard')
+    res.redirect('/dashboard')
 
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error Loging in" });
   }
 });
+
+//GET /dashboard
+route.get('/dashboard', async(req, res) => {
+    try {
+
+        res.render('admin/dashboard')
+        
+    } catch (error) {
+        console.log(error);
+        res.json({success: false, message: "Error"});
+    }
+})
 
 
 
