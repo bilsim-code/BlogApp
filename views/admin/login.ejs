@@ -1,1 +1,50 @@
-<h3>Sign in</h3>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/search.ejs') %> <%-
+    include('../partials/adminNavPartial.ejs') %>
+    <div class="container login-page">
+      <h3>Sign in</h3>
+      <form action="/login" method="post">
+        <label for="username"><b>Username: </b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="username"
+          id="username"
+        />
+
+        <label for="password"><b>Password: </b></label>
+        <input type="password" name="password" id="password" placeholder="Enter Password">
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <h3>Register</h3>
+      <form action="/register" method="post">
+        <label for="username"><b>Username: </b></label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="username"
+          id="username"
+        />
+
+        <label for="password"><b>Password: </b></label>
+        <input type="password" name="password" id="password" placeholder="Enter Password">
+        <button type="submit" class="btn">Register</button>
+      </form>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

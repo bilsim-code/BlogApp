@@ -215,22 +215,40 @@ footer {
     align-items: center;
 }
 
-.admin-posts {
+/* .admin-posts {
     padding: 0;
     margin: 0;
+} */
+
+.login-page h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
 }
 
-.admin-post-controls form {
-    display: inline-block;
+.login-page input {
+    display: block;
+    width: 100%;
+    border: 1.5px solid black;
+    padding: 8px;
+    outline-color: gray;
+    margin-bottom: 20px;
 }
 
-.admin-post-controls .btn {
+.login-page .btn {
     display: inline-block;
     background: #000;
     color: #f0f0f0;
     border: 0;
     text-decoration: none;
     font-size: 0.8rem;
+    font-weight: 600;
     padding: 4px 8px;
     line-height: 2;
+}
+
+.login-page {
+    margin: 80px auto;
+    max-width: 600px
 }

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT;
 const postRoute = require("./routes/postRoute");
-const adminRoute = require('./routes/adminRoute');
+const adminRoute = require('./routes/userRoute');
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGODBURI)
 .then(() => {
