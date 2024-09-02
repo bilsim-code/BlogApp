@@ -4,6 +4,11 @@ const PORT = process.env.PORT;
 const postRoute = require("./routes/postRoute");
 const adminRoute = require('./routes/userRoute');
 const mongoose = require("mongoose");
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+
 mongoose.connect(process.env.MONGODBURI)
 .then(() => {
     console.log(`Database connected: ${mongoose.connection.host}`)
@@ -14,6 +19,8 @@ mongoose.connect(process.env.MONGODBURI)
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public', {root: __dirname}));
+app.use(cookieParser());
+
 
 //ejs engine
 app.set('view engine', 'ejs');
