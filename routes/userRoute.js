@@ -15,5 +15,34 @@ route.get("/login", async(req, res) => {
     }
 })
 
+//POST ADMIN/LOGIN
+route.post('/login', async(req, res) => {
+    try {
+        const {username, password} = req.body;
+        if(username === 'admin' && password === 'admin') {
+            console.log(req.body)
+            res.redirect('/')
+        }
+        
+    } catch (error) {
+        console.log(error);
+        res.json({success: false, message: "Error Loging in"})
+    }
+})
+
+
+//POST ADMIN/REGISTER
+route.post('/register', async(req, res) => {
+    try {
+        const {username, password} = req.body;
+        if(password === "" && username === "") {
+            res.json({success: false, message: "Fill in all the forms"});
+        }
+        
+    } catch (error) {
+        
+    }
+})
+
 
 module.exports = route
