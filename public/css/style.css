@@ -327,3 +327,28 @@ footer {
     width: 100px;
     border: 0;
 }
+
+.mt {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: sans-serif;
+    min-height: 50vh;
+}
+
+.mt h2 {
+    text-align: center;
+}
+
+.mt p {
+    text-align: center;
+}
+
+.mt .dates {
+   display: flex;
+   justify-content: space-between;
+   color: gray;
+   font-size: 14px;
+   margin-top: 20px;
+}

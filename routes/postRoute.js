@@ -31,10 +31,10 @@ router.get("/post/:id", async(req, res) => {
   try {
     const id = req.params.id
     const data = await postModel.findById({_id: id});
-    res.render('post', {data})
-    
+    res.render('main/singlePost', {data})
   } catch (error) {
-    
+    console.log(error);
+    res.json({success: false, message: "Error"});
   }
 })
 

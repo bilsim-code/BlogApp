@@ -5,6 +5,7 @@ const postModel = require('../models/postsModel');
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
+const { AuthMechanism } = require("mongodb");
 
 //authMiddleware
 const authMiddleware = async (req, res, next) => {
@@ -116,6 +117,25 @@ route.get('/add-post',authMiddleware, async(req, res) => {
         
     } catch (error) {
         console.log(error);
+    }
+})
+
+//POST add-post
+route.post('/add-post', authMiddleware, async(req, res) => {
+    try {
+        const {title, body} = req.body
+        if(title.trim() === "" || body.trim() === "") {
+           return res.json({success: false, message: "Pleases add data "})
+        }
+        const data = await postModel.create({
+            title,
+            body
+        })
+
+        res.redirect('/dashboard')
+    } catch (error) {
+        console.log(error);
+        res.json({success: false, message: "Error"});
     }
 })
 
