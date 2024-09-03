@@ -142,6 +142,9 @@ route.post('/add-post', authMiddleware, async(req, res) => {
 //GET edit-post
 route.get('/edit-post/:id', authMiddleware, async(req, res) => {
   try {
+    const id = req.params.id;
+    const data = await postModel.findById({_id: id});
+    res.render('admin/edit-post', {data})
     
   } catch (error) {
     console.log(error);

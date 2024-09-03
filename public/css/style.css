@@ -305,6 +305,8 @@ footer {
 }
 
 .add-new-post input,
+.edit-new-post input,
+.edit-new-post textarea,
 .add-new-post textarea{
     display: block;
     width: 100%;
@@ -313,6 +315,8 @@ footer {
 }
 
 .add-new-post input:focus,
+.edit-new-post input:focus,
+.edit-new-post textarea:focus,
 .add-new-post textarea:focus {
     outline: 1.5px solid gray;
     border: 0;
