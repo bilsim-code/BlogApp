@@ -314,6 +314,15 @@ footer {
     padding: 8px
 }
 
+.edit-new-post .btn {
+    background: #000;
+    color: #fff;
+    margin-top: 10px;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+}
+
 .add-new-post input:focus,
 .edit-new-post input:focus,
 .edit-new-post textarea:focus,
@@ -356,3 +365,4 @@ footer {
    font-size: 14px;
    margin-top: 20px;
 }
+

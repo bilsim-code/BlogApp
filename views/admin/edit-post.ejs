@@ -20,10 +20,10 @@
 
       <form action="/edit-post/<%= data._id %>?_method=PUT" method="POST" class="edit-new-post">
         <label for="title"><b>Title: </b></label>
-        <input type="text" name="title" id="title" placeholder="Post Title" />
+        <input type="text" name="title" id="title" placeholder="Post Title" value="<%= data.title %>" />
 
         <label for="body">Content: </label>
-        <textarea name="body" id="" rows="10" cols="50"></textarea>
+        <textarea name="body" id="" rows="10" cols="50"><%= data.body %></textarea>
 
         <button type="submit" class="btn">Update</button>
       </form>

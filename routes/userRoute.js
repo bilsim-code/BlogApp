@@ -152,4 +152,20 @@ route.get('/edit-post/:id', authMiddleware, async(req, res) => {
   }
 })
 
+//PUT edit-post
+route.put('/edit-post/:id', authMiddleware, async(req, res) => {
+  try {
+    const id = req.params.id;
+    await postModel.findByIdAndUpdate(id, {
+      title: req.body.title,
+      body: req.body.body,
+      updatedAt: Date.now()
+    })
+    res.redirect(`/edit-post/${id}`)
+  } catch (error) {
+    console.log(error);
+    res.json({success: false, message: "Error"});
+  }
+})
+
 module.exports = route;
