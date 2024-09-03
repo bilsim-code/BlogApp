@@ -298,3 +298,32 @@ footer {
     border: none;
     cursor: pointer
 }
+
+.add-new-post {
+    width: 600px;
+    margin: 10px auto;
+}
+
+.add-new-post input,
+.add-new-post textarea{
+    display: block;
+    width: 100%;
+    border: 1px solid #000;
+    padding: 8px
+}
+
+.add-new-post input:focus,
+.add-new-post textarea:focus {
+    outline: 1.5px solid gray;
+    border: 0;
+}
+
+.add-new-post .btn {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 8px;
+    width: 100px;
+    border: 0;
+}

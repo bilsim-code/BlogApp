@@ -1,16 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add New Post</title>
-</head>
-<body>
-    <a href="/dashboard">&larr; Back</a>
-    <div class="admin-title">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/adminNavPartial.ejs') %>
+    <div class="container">
+      <a href="/dashboard">&larr; Back</a>
+      <div class="admin-title">
         <h2>Add New Post</h2>
-    </div>
+      </div>
 
-    <form action="/add-post" method="POST"></form>
-</body>
+      <form action="/add-post" method="POST" class="add-new-post">
+        <label for="title"><b>Title: </b></label>
+        <input type="text" name="title" id="title" placeholder="Post Title" />
+
+        <label for="body">Content: </label>
+        <textarea name="body" id="" rows="10" cols="50"></textarea>
+
+        <button type="submit" class="btn">Add</button>
+      </form>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
 </html>
