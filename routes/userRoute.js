@@ -171,6 +171,9 @@ route.put('/edit-post/:id', authMiddleware, async(req, res) => {
 //DELETE delete-post
 route.delete('/delete-post/:id', async(req, res) => {
   try {
+    const id = req.params.id;
+    await postModel.findByIdAndDelete(id)
+    res.redirect('/dashboard')
     
   } catch (error) {
     console.log(error);
