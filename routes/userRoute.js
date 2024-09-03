@@ -168,4 +168,14 @@ route.put('/edit-post/:id', authMiddleware, async(req, res) => {
   }
 })
 
+//DELETE delete-post
+route.delete('/delete-post/:id', async(req, res) => {
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    res.json({success: false, message: "Error"});
+  }
+})
+
 module.exports = route;
