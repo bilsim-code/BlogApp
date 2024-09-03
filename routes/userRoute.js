@@ -139,4 +139,14 @@ route.post('/add-post', authMiddleware, async(req, res) => {
     }
 })
 
+//GET edit-post
+route.get('/edit-post/:id', authMiddleware, async(req, res) => {
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    res.json({success: false, message: "Error"});
+  }
+})
+
 module.exports = route;
