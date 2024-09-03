@@ -181,4 +181,15 @@ route.delete('/delete-post/:id', async(req, res) => {
   }
 })
 
+//GET logout
+route.get('/logout', async(req, res) => {
+  try {
+    res.clearCookie('token');
+    res.redirect('/')
+  } catch (error) {
+    console.log(error);
+    res.json({success: false, message: "Error"});
+  }
+})
+
 module.exports = route;

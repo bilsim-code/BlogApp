@@ -23,7 +23,7 @@
     justify-items: baseline;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    grid-template-areas: "logo search" "ul ul";
+    grid-template-areas: "logo left" "ul ul";
     width: 100%;
     box-shadow: 2px 2px 10px;
     /* position: sticky; */
@@ -35,7 +35,7 @@
 @media(min-width: 1200px) {
     .nav {
         grid-template-columns: auto 1fr auto;
-        grid-template-areas: "logo ul search";
+        grid-template-areas: "logo ul left";
     }
 }
 
@@ -74,14 +74,29 @@
     color: #605f5f;
 }
 
+.left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    grid-area: left;
+}
+
 .searchBtn {
-    grid-area: search;
     display: flex;
     align-items: center;
     gap: 4px;
     cursor: pointer;
     width: fit-content;
     padding: 6px;
+}
+
+.login-button {
+    cursor: pointer;
+    padding: 6px;
+}
+
+.login-button a {
+    text-decoration: none;
 }
 
 .searchBtn img {
@@ -373,3 +388,10 @@ footer {
    margin-top: 20px;
 }
 
+.logout-button {
+    padding: 4px
+}
+
+.logout-button a {
+    text-decoration: none;
+}
