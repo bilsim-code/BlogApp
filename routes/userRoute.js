@@ -5,7 +5,6 @@ const postModel = require('../models/postsModel');
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
-const { AuthMechanism } = require("mongodb");
 
 //authMiddleware
 const authMiddleware = async (req, res, next) => {
